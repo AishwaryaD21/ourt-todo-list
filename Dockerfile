@@ -1,5 +1,13 @@
-FROM openjdk:8
+FROM tomcat:9.0-jdk8-openjdk-alpine
+
+# Remove the existing Tomcat webapps directory
+RUN rm -rf /usr/local/tomcat/webapps/*
+
+# Copy the WAR file to the Tomcat webapps directory
+COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
+
+# Expose port 8080 (the default Tomcat port)
 EXPOSE 8080
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+
+# Start Tomcat and deploy the application
+CMD ["catalina.sh", "run"]
