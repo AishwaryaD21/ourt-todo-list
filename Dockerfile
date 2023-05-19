@@ -1,4 +1,4 @@
-FROM tomcat:9.0-jdk8-openjdk-alpine
+FROM tomcat:9.0
 
 # Remove the existing Tomcat webapps directory
 RUN rm -rf /usr/local/tomcat/webapps/*
