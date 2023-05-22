@@ -1,4 +1,4 @@
-FROM tomcat:latest
-ADD ./target/ourTodoList-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/
+FROM tomcat:9.0
+COPY target/ourTodoList-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
